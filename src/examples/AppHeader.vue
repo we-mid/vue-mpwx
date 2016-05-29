@@ -3,9 +3,12 @@
     <div class="head_box">
       <div class="inner wrp">
         <h1 class="logo"><a v-link="'/'" title="微信公众平台"></a></h1>
-        <div class="account"> </div>
+        <div class="account">
+          <slot name="account"></slot>
+        </div>
       </div>
     </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -40,5 +43,10 @@
   .logo a:before {
     display: inline-block;
     content: url(../assets/bg_logo2491a6.png);
+  }
+
+  .account {
+    float: right;
+    padding-top: 10px;
   }
 </style>

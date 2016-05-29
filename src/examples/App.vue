@@ -1,22 +1,15 @@
 <template>
   <div id="app">
-    <app-header></app-header>
-
-    <div id="body" class="body page_error page_500">
-      <div class="container_box">
-        <router-view></router-view>
-      </div>
-    </div>
-
+    <router-view></router-view>
     <app-footer></app-footer>
+  </div>
 </template>
 
 <script>
-  import AppHeader from './AppHeader.vue'
   import AppFooter from './AppFooter.vue'
 
   export default {
-    components: { AppHeader, AppFooter }
+    components: { AppFooter }
   }
 </script>
 
@@ -44,19 +37,5 @@
 
     min-width: 1200px;
     background: #e7e8eb;
-  }
-</style>
-
-<style scoped>
-  .body {
-    width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 36px 0 88px;
-  }
-  .container_box {
-    min-height: 700px;
-    border: 1px solid #d9dadc;
-    background-color: #fff;
   }
 </style>
