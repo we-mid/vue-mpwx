@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import AppHeader from './AppHeader.vue'
-  import AppBody from './AppBody.vue'
+  import AppHeader from '../components/AppHeader.vue'
+  import AppBody from '../components/AppBody.vue'
 
   export default {
     components: { AppHeader, AppBody }

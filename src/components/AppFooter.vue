@@ -15,7 +15,9 @@
 
 <style scoped>
   .foot {
-    padding: 24px 0;
+    /*padding: 24px 0;*/
+    padding: 30px 0;
+    margin-top: 70px;
     color: #f1f1f1;
     text-align: center;
     background-color: #b8b9b9;

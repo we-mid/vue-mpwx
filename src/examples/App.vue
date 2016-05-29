@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import AppFooter from './AppFooter.vue'
+  import AppFooter from '../components/AppFooter.vue'
 
   export default {
     components: { AppFooter }
