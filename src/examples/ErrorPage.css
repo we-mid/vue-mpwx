@@ -1,0 +1,27 @@
+.page_error_msg .inner {
+  text-align: center;
+  padding-top: 170px;
+}
+
+.page_error_msg .icon_wrp {
+  display: inline-block;
+}
+.icon_page_error {
+  background: url(../assets/page_error_z264f38.png) 0 0 no-repeat;
+  width: 224px;
+  height: 172px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.icon_page_error.notfound {
+  background-position: 0 -182px;
+}
+
+.page_error_msg .msg_content {
+  padding-top: 20px;
+}
+.page_error_msg h2 {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
