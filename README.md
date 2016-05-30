@@ -5,10 +5,18 @@
 - [x] ErrorPage
 - [x] LoginPage
 - [ ] HomePage
-- [ ] Sidebar
+- [x] Sidebar
+- [ ] PageNav
+- [ ] Tabs
 - [x] Pagination
 - [x] Table
 - [ ] Form
+  - [x] Text
+  - [x] Radio
+  - [ ] Checkbox
+  - [x] DropDown
+  - [x] File
+  - [ ] DatePicker
 - [ ] Chart
 
 <img width="300" src="Snip20160529_2.png">

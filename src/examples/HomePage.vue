@@ -29,8 +29,11 @@
           </h2>
         </div>
 
-        <div class="wrp_overview">
-          <mp-table></mp-table>
+        <div class="main_bd">
+          <div class="wrp_overview">
+            <mp-form></mp-form>
+            <mp-table style="margin-top: 20px;"></mp-table>
+          </div>
         </div>
       </div>
     </app-body>
@@ -40,12 +43,14 @@
 <script>
   import AppHeader from '../components/AppHeader.vue'
   import AppBody from '../components/AppBody.vue'
+  import Form from '../components/Form.vue'
   import Table from '../components/Table.vue'
 
   export default {
     name: 'HomePage',
     components: {
       AppHeader, AppBody,
+      'mp-form': Form,
       'mp-table': Table
     }
   }
