@@ -14,10 +14,10 @@
           <div class="frm_control_group">
             <label for="" class="frm_label">标题</label>
             <div class="frm_controls">
-              <span class="frm_input_box with_counter counter_in append vote_title js_question_title count">
-                <input autofocus="" type="text" placeholder="" class="frm_input js_option_input" name="question_title" value=""><em class="frm_input_append frm_counter">0/35</em>
-              </span>
-              <span class="frm_tips"></span>
+              <text-input
+                :tips="'投票名称只用于管理，不显示在下发的投票内容中'"
+                :fail="'需要在1到35个字之间'"
+                :name="'question_title'"></text-input>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
                 :name="'cate'"
                 :list="radios"></radio-group>
             </div>
-          </div>  
+          </div>
         </div>
 
         <div class="vote_meta_detail js_vote_option">
@@ -44,107 +44,71 @@
           <div class="frm_control_group">
             <div class="frm_label">选项一</div>
             <div class="frm_controls">
-              <span class="frm_input_box with_counter counter_in append count">
-                <input type="text" placeholder="" class="frm_input js_option_input" name="option0" value=""><em class="frm_input_append frm_counter">0/35</em>
+              <text-input
+                :name="'option0'">
+                <div slot="addon" class="upload_area webuploader-container">
+                  <a class="btn btn_upload js_vote_upload_btn webuploader-pick" id="js_upload_0_0">重新上传</a>
+                  <ul class="upload_file_box" style="display:none"></ul>
+                  <div id="rt_rt_1ak05mk7o1bvq1a4ja2f1m24n5l1" style="position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto;">
+                    <input type="file" accept="image/*" style="display: none;">
+                    <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label>
+                  </div>
+                </div>
+              </text-input>
+            </div>
+            <div class="img_container" id="js_upload_0_0" style="">
+              <span class="img_panel">
+                <img class="preview" src="../assets/3dobe.png">
               </span>
-              <!-- <span class="frm_num warning">0/35</span> -->
-          <!-- <span class="btn btn_input btn_default">
-            <a href="javascript:;" id="123">上传图片</a>
-          </span> -->
-          <div class="upload_area webuploader-container">
-
-            <a class="btn btn_upload js_vote_upload_btn webuploader-pick" id="js_upload_0_0">重新上传</a>
-            
-            <ul class="upload_file_box" style="display:none"></ul><div id="rt_rt_1ak05mk7o1bvq1a4ja2f1m24n5l1" style="position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto;"><input type="file" accept="image/*" style="display: none;"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label></div></div>
-
-
-            <span class="frm_tips"></span>
-          </div>
-
-          <div class="img_container" id="js_upload_0_0" style="">
-            <span class="img_panel"><img class="preview" src="../assets/3dobe.png"></span>
-            <a href="javascript:;" class="link_dele" id="js_delete_0_0">删除</a>
+              <a href="javascript:;" class="link_dele" id="js_delete_0_0">删除</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="vote_meta_detail js_vote_option">
-        <div class="frm_control_group">
-          <div class="frm_label">选项二</div>
-          <div class="frm_controls">
-            <span class="frm_input_box with_counter counter_in append count">
-              <input type="text" placeholder="" class="frm_input js_option_input" name="option1" value=""><em class="frm_input_append frm_counter">0/35</em>
-            </span>
-            <!-- <span class="frm_num warning">0/35</span> -->
-          <!-- <span class="btn btn_input btn_default">
-            <a href="javascript:;" id="123">上传图片</a>
-          </span> -->
-          <div class="upload_area webuploader-container">
-
-            <a class="btn btn_upload js_vote_upload_btn webuploader-pick" id="js_upload_0_1">上传图片</a>
-            
-            <ul class="upload_file_box" style="display:none"></ul><div id="rt_rt_1ak05mk7r1857184a6d9ei3adg4" style="position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto;"><input type="file" accept="image/*" style="display: none;"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label></div></div>
-
-
-            <span class="frm_tips"></span>
-          </div>
-
-          <div class="img_container" id="js_upload_0_1" style="display:none">
-            <span class="img_panel"><img class="preview" src=""></span>
-            <a href="javascript:;" class="link_dele" id="js_delete_0_1">删除</a>
+        <div class="vote_meta_detail js_vote_option">
+          <div class="frm_control_group">
+            <div class="frm_label">选项二</div>
+            <div class="frm_controls">
+              <text-input
+                :name="'option1'">
+                <div slot="addon" class="upload_area webuploader-container">
+                  <a class="btn btn_upload js_vote_upload_btn webuploader-pick" id="js_upload_0_1">上传图片</a>
+                  <ul class="upload_file_box" style="display:none"></ul><div id="rt_rt_1ak05mk7r1857184a6d9ei3adg4" style="position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto;"><input type="file" accept="image/*" style="display: none;"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label></div>
+                </div>
+              </text-input>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="vote_meta_detail js_vote_option">
-        <div class="frm_control_group">
-          <div class="frm_label">选项三</div>
-          <div class="frm_controls">
-            <span class="frm_input_box with_counter counter_in append count">
-              <input type="text" placeholder="" class="frm_input js_option_input" name="option2" value=""><em class="frm_input_append frm_counter">0/35</em>
-            </span>
-            <!-- <span class="frm_num warning">0/35</span> -->
-          <!-- <span class="btn btn_input btn_default">
-            <a href="javascript:;" id="123">上传图片</a>
-          </span> -->
-          <div class="upload_area webuploader-container">
-
-            <a class="btn btn_upload js_vote_upload_btn webuploader-pick" id="js_upload_0_2">上传图片</a>
-            
-            <ul class="upload_file_box" style="display:none"></ul><div id="rt_rt_1ak05mk7s95r90kqf11rqe16507" style="position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto;"><input type="file" accept="image/*" style="display: none;"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label></div></div>
-
-
-            <a href="javascript:;" class="link_delete js_delete_item" data-tag="0" data-item="2">删除选项</a>
-
-            <span class="frm_tips"></span>
-          </div>
-
-          <div class="img_container" id="js_upload_0_2" style="display:none">
-            <span class="img_panel"><img class="preview" src=""></span>
-            <a href="javascript:;" class="link_dele" id="js_delete_0_2">删除</a>
+        <div class="vote_meta_detail js_vote_option">
+          <div class="frm_control_group">
+            <div class="frm_label">选项三</div>
+            <div class="frm_controls">
+              <text-input :name="'option2'"></text-input>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="vote_meta_detail tips_wrp">
-        <p id="voteAdd" class="tips_global option_tips">
-          <a href="javascript:;" class="js_add_item" data-tag="0">添加选项</a>
-        </p>
-        <!--<p id="voteFull" class="tips_global option_tips">选项已满，不可继续添加</p>-->
-      </div>
+        <div class="vote_meta_detail tips_wrp">
+          <p id="voteAdd" class="tips_global option_tips">
+            <a href="javascript:;" class="js_add_item" data-tag="0">添加选项</a>
+          </p>
+          <!--<p id="voteFull" class="tips_global option_tips">选项已满，不可继续添加</p>-->
+        </div>
 
-      <div class="vote_container_dec">
-        <a class="btn btn_default btn_add btn_vote_add" href="javascript:;" id="js_add_question"><i class="icon14_common add_gray"></i>添加问题</a>
-        <!--#0001#--> 
-        <p id="js_error" style="display:none;" class="frm_tips">问题填写完整才能添加下一个问题</p>
-        <!--%0001%-->
-        <!--<div id="js_error" style="display:none;" class="bubble_tips bubble_left warn">
-          <div class="bubble_tips_inner">
-            <p>问题填写完整才能添加下一个问题</p>
-          </div>
-          <i class="bubble_tips_arrow out"></i>
-          <i class="bubble_tips_arrow in"></i>
-        </div>-->
+        <div class="vote_container_dec">
+          <a class="btn btn_default btn_add btn_vote_add" href="javascript:;" id="js_add_question"><i class="icon14_common add_gray"></i>添加问题</a>
+          <!--#0001#-->
+          <p id="js_error" style="display:none;" class="frm_tips">问题填写完整才能添加下一个问题</p>
+          <!--%0001%-->
+          <!--<div id="js_error" style="display:none;" class="bubble_tips bubble_left warn">
+            <div class="bubble_tips_inner">
+              <p>问题填写完整才能添加下一个问题</p>
+            </div>
+            <i class="bubble_tips_arrow out"></i>
+            <i class="bubble_tips_arrow in"></i>
+          </div>-->
+        </div>
       </div>
     </div>
   </form>
@@ -154,10 +118,11 @@
 <script>
   import _ from 'lodash'
   import Dropdown from './Dropdown.vue'
+  import TextInput from './TextInput.vue'
   import RadioGroup from './RadioGroup.vue'
 
   export default {
-    components: { Dropdown, RadioGroup },
+    components: { Dropdown, TextInput, RadioGroup },
 
     props: {
       title: {
@@ -274,90 +239,6 @@
     vertical-align: top;
     float: none;
     width: auto;
-  }
-  .frm_input_box {
-    display: inline-block;
-    position: relative;
-    height: 30px;
-    line-height: 30px;
-    vertical-align: middle;
-    width: 278px;
-    font-size: 14px;
-    padding: 0 10px;
-    border: 1px solid #e7e7eb;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    border-radius: 0;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    background-color: #fff;
-  }
-  .frm_input_box.append {
-    padding-right: 30px;
-  }
-  .frm_input_box.counter_in {
-    padding-right: 70px;
-  }
-  .frm_input_box.counter_in {
-    width: 228px;
-    padding-right: 60px;
-  }
-  /*.vote_edit .frm_input_box*/
-  .frm_input_box {
-    width: 248px;
-    margin-right: .3em;
-  }
-
-  .frm_tips {
-    color: #8d8d8d;
-  }
-  .frm_tips, .frm_msg {
-    padding-top: 4px;
-    width: 300px;
-  }
-  .vote_meta .frm_tips {
-    width: auto;
-  }
-  .frm_controls:after {
-    content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
-    visibility: hidden;
-    clear: both;
-    height: 0!important;
-    display: block;
-    line-height: 0;
-  }
-
-  .frm_input, .frm_textarea {
-    width: 100%;
-    background-color: transparent;
-    border: 0;
-    outline: 0;
-  }
-  .frm_input {
-    height: 22px;
-    margin: 4px 0;
-  }
-
-  .frm_input_box .frm_input_append {
-    font-size: 0;
-  }
-  .frm_input_box.append .frm_input_append {
-    position: absolute;
-    top: 0;
-    right: .8em;
-  }
-  .frm_input_box.with_counter .frm_counter {
-    width: 50px;
-    color: #8d8d8d;
-    font-size: 14px;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .frm_input_box.counter_in .frm_counter {
-    right: 0;
-    text-align: right;
-    padding-right: 10px;
   }
 
   .upload_area {
