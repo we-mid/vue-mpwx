@@ -1,6 +1,6 @@
 <template>
   <div id="body" class="body">
-    <div class="container_box">
+    <div class="container_box cell_layout side_l">
       <slot></slot>
     </div>
   </div>
