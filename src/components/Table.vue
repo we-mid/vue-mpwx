@@ -251,6 +251,9 @@
   .right_box .right_box_link {
     border: 0 none;
   }
+  .right_box_link:hover {
+    text-decoration: none;
+  }
   .icon_msg_mini {
     width: 16px;
     height: 16px;
@@ -409,6 +412,19 @@
     width: auto;
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .btn.page_first:hover, .btn.page_last:hover, .btn.page_go:hover {
+    background-color: #e6e7ec;
+    background-image: -moz-linear-gradient(top,#e6e7ec 0,#e6e7ec 100%);
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#e6e7ec),to(#e6e7ec));
+    background-image: -webkit-linear-gradient(top,#e6e7ec 0,#e6e7ec 100%);
+    background-image: -o-linear-gradient(top,#e6e7ec 0,#e6e7ec 100%);
+    background-image: linear-gradient(to bottom,#e6e7ec 0,#e6e7ec 100%);
+    border-color: #dadbe0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    color: #000;
   }
 
   .btn.page_prev, .btn.page_next {
