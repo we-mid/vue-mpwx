@@ -42,6 +42,26 @@
 
         <div class="vote_meta_detail js_vote_option">
           <div class="frm_control_group">
+            <div class="frm_label">图片</div>
+            <div class="frm_controls">
+              <file-upload :accept="'image/*'"
+                :name="'image'" file="true"></file-upload>
+            </div>
+          </div>
+        </div>
+
+        <div class="vote_meta_detail js_vote_option">
+          <div class="frm_control_group">
+            <div class="frm_label">图片2</div>
+            <div class="frm_controls">
+              <file-upload :accept="'image/*'"
+                :name="'image2'"></file-upload>
+            </div>
+          </div>
+        </div>
+
+        <div class="vote_meta_detail js_vote_option">
+          <div class="frm_control_group">
             <div class="frm_label">选项一</div>
             <div class="frm_controls">
               <text-input
@@ -56,12 +76,12 @@
                 </div>
               </text-input>
             </div>
-            <div class="img_container" id="js_upload_0_0" style="">
+            <!-- <div class="img_container" id="js_upload_0_0" style="">
               <span class="img_panel">
                 <img class="preview" src="../assets/3dobe.png">
               </span>
               <a href="javascript:;" class="link_dele" id="js_delete_0_0">删除</a>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -118,11 +138,12 @@
 <script>
   import _ from 'lodash'
   import Dropdown from './Dropdown.vue'
+  import FileUpload from './FileUpload.vue'
   import TextInput from './TextInput.vue'
   import RadioGroup from './RadioGroup.vue'
 
   export default {
-    components: { Dropdown, TextInput, RadioGroup },
+    components: { Dropdown, FileUpload, TextInput, RadioGroup },
 
     props: {
       title: {
@@ -241,6 +262,7 @@
     width: auto;
   }
 
+  /* --- */
   .upload_area {
     position: relative;
     display: inline-block;
@@ -294,6 +316,9 @@
     margin-left: 5em;
     margin-top: .5em;
   }
+  .frm_controls .img_container {
+    margin-left: 0;
+  }
   .img_container .img_panel {
     display: table-cell;
   }
@@ -306,6 +331,7 @@
     display: table-cell;
     padding-left: .5em;
   }
+  /* --- */
 
   .vote_meta_detail.vote_meta_radio {
     padding-left: 5em;
