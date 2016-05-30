@@ -12,6 +12,7 @@
         </li>
       </ul>
     </div>
+    <input type="hidden" name="{{name}}" value="{{curr.value}}">
   </div>
 </template>
 
@@ -38,7 +39,7 @@
 
       select (item) {
         this.curr = item
-        this.$dispatch('select', item)
+        this.$dispatch('mpwx-select', item)
         this.open = false
       }
     }

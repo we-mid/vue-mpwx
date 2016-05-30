@@ -3,13 +3,13 @@
     <form id="question_0" class="vote_form" novalidate="novalidate">
       <div class="vote_meta_title group">
         <div class="vote_meta_title_opr">
-          <a href="javascript:;" class="js_question_edit" data-tag="0">收起</a>
+          <a href="javascript:;" class="js_question_edit" @click="collapsed=!collapsed">{{collapsed ? '编辑' : '收起'}}</a>
         </div>
-        <span class="vote_warn" style="display:none">问题填写完整才能添加下一个问题</span>
-        <span class="vote_num">问题一</span>
+        <!-- <span class="vote_warn" style="display:none">问题填写完整才能添加下一个问题</span> -->
+        <span class="vote_num">{{title}}</span>
         <span class="vote_question js_vote_question"></span>
       </div>
-      <div class="vote_meta js_item_container vote_meta_content" style="display:">
+      <div class="vote_meta js_item_container vote_meta_content" :class="[collapsed && 'collapsed']">
         <div class="vote_meta_detail">
           <div class="frm_control_group">
             <label for="" class="frm_label">标题</label>
@@ -24,16 +24,9 @@
         <div class="vote_meta_detail js_vote_type vote_meta_radio">
           <div class="frm_control_group">
             <div class="frm_controls vote_meta_radio">
-              <label class="vote_radio_label selected frm_radio_label" for="checkbox1">
-                <i class="icon_radio"></i>
-                <span type="label_content">单选</span>
-                <input name="isMlt" type="radio" value="1" class="vote_radio frm_radio" checked="" id="checkbox1">
-              </label>
-              <label class="vote_radio_label frm_radio_label" for="checkbox2">
-                <i class="icon_radio"></i>
-                <span type="label_content">多选</span>
-                <input name="isMlt" type="radio" value="2" class="vote_radio frm_radio" id="checkbox2">
-              </label>
+              <radio-group
+                :name="'cate'"
+                :list="radios"></radio-group>
             </div>
           </div>  
         </div>
@@ -161,12 +154,26 @@
 <script>
   import _ from 'lodash'
   import Dropdown from './Dropdown.vue'
+  import RadioGroup from './RadioGroup.vue'
 
   export default {
-    components: { Dropdown },
+    components: { Dropdown, RadioGroup },
+
+    props: {
+      title: {
+        type: String
+      }
+    },
 
     data () {
       return {
+        collapsed: false,
+
+        radios: [
+        { title: '单选', value: 1 },
+        { title: '多选', value: 2 }
+        ],
+
         fields: [
         { key: 'date', title: '时间' },
         { key: 'new', title: '新关注人数', align: 'right' },
@@ -241,10 +248,13 @@
   .vote_meta_title .vote_meta_title_opr a {
     margin-left: 1em;
   }
-
   .vote_meta_content {
     padding: 2em 2em;
   }
+  .vote_meta_content.collapsed {
+    display: none;
+  }
+
   .frm_control_group {
     padding-bottom: 25px;
   }
@@ -422,46 +432,6 @@
   .frm_control_group {
     padding-bottom: 25px;
   }
-  .frm_radio_label, .frm_checkbox_label {
-    display: inline-block;
-    text-align: left;
-    cursor: pointer;
-    margin-right: 1em;
-  }
-
-  .icon_radio {
-    background: url(../assets/base_z2b638f.png) 0 0 no-repeat;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    display: inline-block;
-    margin-top: -0.2em;
-  }
-  .icon_radio {
-    margin-right: 4px;
-  }
-  .icon_radio, .icon_checkbox {
-    margin-right: 3px;
-    margin-top: -2px;
-  }
-  .icon_radio {
-    background: url(../assets/base_z2b638f.png) 0 -182px no-repeat;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    display: inline-block;
-  }
-  .icon_radio.selected, .selected .icon_radio {
-    background: url(../assets/base_z2b638f.png) 0 -26px no-repeat;
-  }
-  .icon_radio.selected, .selected .icon_radio {
-    background: url(../assets/base_z2b638f.png) 0 -208px no-repeat;
-  }
-  .frm_radio, .frm_checkbox {
-    position: absolute;
-    left: -999em;
-  }
-
 
   .vote_meta_detail.tips_wrp {
     border-top: 1px solid #e7e7eb;

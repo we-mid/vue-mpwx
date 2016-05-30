@@ -31,8 +31,12 @@
 
         <div class="main_bd">
           <div class="wrp_overview">
-            <mp-form></mp-form>
-            <mp-table style="margin-top: 20px;"></mp-table>
+            <mp-form :title="'问题一'"></mp-form>
+            <mp-table style="margin-top: 20px;"
+              :title="title" :fields="fields" :records="records">
+              <pagination slot="foot" :total="3"
+                @mpwx-page-goto="handlePageGoto"></pagination>
+            </mp-table>
           </div>
         </div>
       </div>
@@ -43,15 +47,43 @@
 <script>
   import AppHeader from '../components/AppHeader.vue'
   import AppBody from '../components/AppBody.vue'
+  import Pagination from '../components/Pagination.vue'
   import Form from '../components/Form.vue'
   import Table from '../components/Table.vue'
 
   export default {
-    name: 'HomePage',
+    name: 'HomePage', // for vue-devtool
+
     components: {
-      AppHeader, AppBody,
+      AppHeader, AppBody, Pagination,
       'mp-form': Form,
       'mp-table': Table
+    },
+
+    data () {
+      return {
+        title: '2016-03-30 至 2016-04-28',
+        fields: [
+          { key: 'date', title: '时间' },
+          { key: 'new', title: '新关注人数', align: 'right' },
+          { key: 'lost', title: '取消关注人数', align: 'right' },
+          { key: 'net', title: '净增关注人数', align: 'right' },
+          { key: 'acc', title: '累积关注人数', align: 'right' },
+        ],
+        records: _.times(15, () => ({
+          date: '2016-05-28',
+          new: 1,
+          lost: 1,
+          net: 0,
+          acc: 103
+        }))
+      }
+    },
+
+    methods: {
+      handlePageGoto (to) {
+        console.log('pageGoto', to)
+      }
     }
   }
 </script>
