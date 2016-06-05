@@ -11,6 +11,9 @@ const router = new Router()
 
 router.map({
   '/': { component: HomePage },
+  '/health': { component: HomePage },
+  '/todo': { component: HomePage },
+  '/blog': { component: HomePage },
   '/login': { component: LoginPage },
   '/error': { component: ErrorPage },
   '*': { component: ErrorPage } // 404

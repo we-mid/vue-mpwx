@@ -1,26 +1,31 @@
 <template>
-  <div v-show="!file" class="upload_area webuploader-container">
-    <a class="btn btn_upload js_vote_upload_btn webuploader-pick">
-      上传文件
-    </a>
-    <ul class="upload_file_box" style="display:none"></ul>
-    <div style="position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto;">
-      <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);">
-        <input v-el:input type="file" style="display: none;"
-          :accept="accept" :name="name"
-          :multiple="multiple" @change="change">
-      </label>
+  <div>
+    <div v-show="!files.length" class="upload_area webuploader-container">
+      <a class="btn btn_upload js_vote_upload_btn webuploader-pick">
+        上传文件
+      </a>
+      <ul class="upload_file_box" style="display:none"></ul>
+      <div style="position: absolute; top: 0px; left: 0px; width: 106px; height: 32px; overflow: hidden; bottom: auto; right: auto;">
+        <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);">
+          <input v-el:input type="file" style="display: none;"
+            :accept="accept" :name="name"
+            :multiple="multiple" @change="change">
+        </label>
+      </div>
     </div>
-  </div>
-  <div v-if="file" class="img_container">
-    <span class="img_panel">
-      <img class="preview" src="../assets/3dobe.png">
-    </span>
-    <a href="javascript:;" class="link_dele" @click="clear()">删除</a>
+    <div v-if="files.length" class="img_container">
+      <span v-for="item in files" class="img_panel">
+        <img class="preview" :src="item">
+      </span>
+      <a href="javascript:;" class="link_dele" @click="clear()">删除</a>
+    </div>
   </div>
 </template>
 
 <script>
+  /* global FileReader */
+  const forEach = Array.prototype.forEach
+
   export default {
     props: {
       accept: {
@@ -33,8 +38,9 @@
       multiple: {
         type: Boolean
       },
-      file: {
-        type: String
+      files: {
+        type: Array,
+        default: () => []
       }
     },
 
@@ -42,17 +48,22 @@
       change (e) {
         // todo: html5 filereader
         // todo: img_container
-        console.log(e.target.files)
-        this.file = {
-          type: e.target.files[0].type,
-          name: e.target.files[0].name,
-          size: e.target.files[0].size,
-        }
+        this.files = []
+        const files = e.target.files
+        console.log('files', files)
+        forEach.call(files, (item, i) => {
+          const reader = new FileReader()
+          reader.readAsDataURL(item)
+          reader.onload = (e) => {
+            this.files.$set(i, e.target.result)
+          }
+        })
       },
 
       clear () {
-        this.file = null
+        this.files = []
         this.$els.input.value = ''
+        // this.$els.input.files = null
       }
     }
   }
@@ -104,7 +115,7 @@
     right: 0;
     left: auto;
   }
-  .vote_meta_detail .frm_control_group .link_delete {
+  .frm_control_group .link_delete {
     margin-left: .5em;
   }
 

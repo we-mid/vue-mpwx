@@ -21,12 +21,36 @@
             </div>
           </div>
         </div>
-        <div class="vote_meta_detail js_vote_type vote_meta_radio">
+        <div class="vote_meta_detail js_vote_type vote_meta_radio"
+          style="margin-top: -15px;">
           <div class="frm_control_group">
             <div class="frm_controls vote_meta_radio">
               <radio-group
                 :name="'cate'"
                 :list="radios"></radio-group>
+            </div>
+          </div>
+        </div>
+
+        <div class="vote_meta_detail">
+          <div class="frm_control_group">
+            <label for="" class="frm_label">分类</label>
+            <div class="frm_controls">
+              <radio-group
+                :name="'cate'"
+                :list="radios"
+                :default="2"></radio-group>
+            </div>
+          </div>
+        </div>
+        <div class="vote_meta_detail">
+          <div class="frm_control_group">
+            <label for="" class="frm_label">分类</label>
+            <div class="frm_controls">
+              <check-group
+                :name="'cate'"
+                :list="radios"
+                :default="2"></check-group>
             </div>
           </div>
         </div>
@@ -45,7 +69,9 @@
             <div class="frm_label">图片</div>
             <div class="frm_controls">
               <file-upload :accept="'image/*'"
-                :name="'image'" file="true"></file-upload>
+                :name="'image'"
+                :multiple="true"
+                :files="['http://vuejs.org/images/logo.png']"></file-upload>
             </div>
           </div>
         </div>
@@ -141,9 +167,10 @@
   import FileUpload from './FileUpload.vue'
   import TextInput from './TextInput.vue'
   import RadioGroup from './RadioGroup.vue'
+  import CheckGroup from './CheckGroup.vue'
 
   export default {
-    components: { Dropdown, FileUpload, TextInput, RadioGroup },
+    components: { Dropdown, FileUpload, TextInput, RadioGroup, CheckGroup },
 
     props: {
       title: {

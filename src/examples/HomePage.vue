@@ -3,20 +3,7 @@
     <app-header></app-header>
     <app-body>
       <div class="col_side">
-        <div class="menu_box" id="menuBar">
-          <dl class="menu no_extra">
-            <dt class="menu_title">
-                <i class="icon_menu" style="background:url(
-                https://res.wx.qq.com/mpres/htmledition/images/icon/menu/icon_menu_function.png
-                ) no-repeat;"></i>功能
-            </dt> 
-            <dd class="menu_item selected"><a data-id="10005" href="/cgi-bin/masssendpage?t=mass/send&amp;token=1062882139&amp;lang=zh_CN">群发功能        </a></dd>
-            <dd class="menu_item "><a data-id="10006" href="/advanced/autoreply?t=ivr/reply&amp;action=beadded&amp;token=1062882139&amp;lang=zh_CN">自动回复        </a></dd>
-            <dd class="menu_item "><a data-id="10007" href="/advanced/selfmenu?action=index&amp;t=advanced/menu-setting&amp;token=1062882139&amp;lang=zh_CN">自定义菜单        </a></dd>
-            <dd class="menu_item"><a data-id="10038" href="/cgi-bin/newoperatevote?action=list&amp;token=1062882139&amp;lang=zh_CN">投票管理        </a></dd>
-            <!-- <dd class="menu_plugins"><a class="btn_plugins_add" data-id="10025" href="/cgi-bin/plugincenter?t=service/plugins&amp;act=all&amp;token=1062882139&amp;lang=zh_CN">添加功能插件<i class="icon_common new"></i></a></dd> -->
-          </dl>
-        </div>  
+        <menubar :title="menu.title" :list="menu.list"></menubar>
       </div>
 
       <div class="col_main">
@@ -47,6 +34,7 @@
 <script>
   import AppHeader from '../components/AppHeader.vue'
   import AppBody from '../components/AppBody.vue'
+  import Menubar from '../components/Menubar.vue'
   import Pagination from '../components/Pagination.vue'
   import Form from '../components/Form.vue'
   import Table from '../components/Table.vue'
@@ -55,13 +43,22 @@
     name: 'HomePage', // for vue-devtool
 
     components: {
-      AppHeader, AppBody, Pagination,
+      AppHeader, AppBody, Menubar, Pagination,
       'mp-form': Form,
       'mp-table': Table
     },
 
     data () {
       return {
+        menu: {
+          title: '个人数据中心',
+          list: [
+            { title: '健康管理', link: '/health', selected: true },
+            { title: '备忘管理', link: '/todo' },
+            { title: '博客管理', link: '/blog' },
+          ]
+        },
+
         title: '2016-03-30 至 2016-04-28',
         fields: [
           { key: 'date', title: '时间' },
@@ -99,72 +96,6 @@
   .container_box.cell_layout .col_side {
     width: 17.5%;
     max-width: 208px;
-  }
-
-  .menu_box {
-    margin-bottom: 150px;
-  }
-  .menu {
-      padding-top: 6px;
-  }
-  .menu {
-    padding-bottom: 6px;
-    border-top: 1px solid #e7e7eb;
-  }
-  .menu.no_extra {
-    border-top-width: 0;
-    margin-top: 13px;
-  }
-
-  .menu_title {
-    position: relative;
-    padding: 0 30px 0;
-    width: auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-    line-height: 34px;
-    color: #8d8d8d;
-  }
-  .menu_title {
-    margin-bottom: 0;
-  }
-  .icon_menu {
-    width: 18px;
-    height: 18px;
-    vertical-align: middle;
-    display: inline-block;
-  }
-  .icon_menu {
-    margin-right: 10px;
-    margin-top: -0.2em;
-  }
-  .menu_item {
-    line-height: 34px;
-  }
-  .menu_item:hover {
-    background-color: #f4f5f9;
-  }
-  .menu_item.selected {
-    background-color: #44b549;
-    color: #fff;
-  }
-  .menu_item a {
-    display: block;
-    padding: 0 0 0 58px;
-    width: auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-    color: #222;
-  }
-  .menu_item a:hover {
-    text-decoration: none;
-  }
-  .menu_item.selected a {
-    color: #fff;
   }
 
   .container_box.cell_layout .col_side, .container_box.cell_layout .col_main {

@@ -5,17 +5,17 @@
 - [x] ErrorPage
 - [x] LoginPage
 - [ ] HomePage
-- [x] Sidebar
+- [x] Menubar
 - [ ] PageNav
 - [ ] Tabs
 - [x] Pagination
 - [x] Table
 - [ ] Form
-  - [x] Text
-  - [x] Radio
-  - [ ] Checkbox
+  - [x] TextInput
+  - [x] RadioGroup
+  - [x] CheckGroup
   - [x] DropDown
-  - [x] File
+  - [x] FileUpload
   - [ ] DatePicker
 - [ ] Chart
 
